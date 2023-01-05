@@ -1,8 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { useDispatch, useSelector, TypedUseSelectorHook } from "react-redux";
+import todoSlice from "../features/todoSlice";
 
 const store = configureStore({
-  reducer: {},
+  reducer: {
+    todos: todoSlice,
+  },
 });
 
 export default store;
@@ -13,7 +16,7 @@ export type appDispatch = typeof store.dispatch;
 
 //  method halinde export edilecekler
 // herzamank kullandığımız usedispatch methoduna doğrudan tip ataması yapmak için kullanacagız.
-export const appUseDispatch = () => useDispatch<appDispatch>();
+export const useAppDispatch = () => useDispatch<appDispatch>();
 // useseloctor kullanırken react-reduxtan gelen hook methoduumza doğrudan tip ataması yapıyoruz.
 
-export const appUseSelector: TypedUseSelectorHook<RootState> = useSelector;
+export const useAppSelector: TypedUseSelectorHook<RootState> = useSelector;
